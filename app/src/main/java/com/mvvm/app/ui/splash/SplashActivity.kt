@@ -19,8 +19,7 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel =
-            ViewModelProvider(this, SplashViewModelFactory()).get(SplashViewModel::class.java)
+        viewModel = ViewModelProvider(this, SplashViewModelFactory()).get(SplashViewModel::class.java)
 
         viewModel.loading.observe(this) {
             if (it) {

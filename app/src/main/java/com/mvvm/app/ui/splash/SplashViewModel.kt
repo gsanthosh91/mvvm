@@ -11,7 +11,7 @@ class SplashViewModel constructor() : ViewModel() {
     fun countdown() {
         Handler().postDelayed({
             loading.postValue(true)
-        }, 5000)
+        }, 2000)
     }
 
 }

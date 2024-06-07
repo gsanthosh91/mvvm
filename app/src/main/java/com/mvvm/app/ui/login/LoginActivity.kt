@@ -18,11 +18,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val repository = LoginRepository(RetrofitService.getInstance())
-        viewModel = ViewModelProvider(
-            this,
-            LoginViewModelFactory(repository)
-        ).get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this, LoginViewModelFactory()).get(LoginViewModel::class.java)
 
         viewModel.loginResponse.observe(this, {
             Log.d("DFERER", "onCreate: " + it)

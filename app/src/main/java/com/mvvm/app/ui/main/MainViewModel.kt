@@ -1,5 +1,6 @@
 package com.mvvm.app.ui.main
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mvvm.app.data.remote.MainRepository
@@ -22,9 +23,10 @@ class MainViewModel constructor(private val mainRepository: MainRepository) : Vi
             loading.postValue(true)
             val response = mainRepository.getAllMovies()
             withContext(Dispatchers.Main) {
+                loading.value = false
                 if (response.isSuccessful) {
-                    movieList.postValue(response.body())
-                    loading.value = false
+                    Log.d("TAG", "getAllMovies: "+response.body()?.size)
+                    movieList.postValue(response.body()!!)
                 } else {
                     onError("Error : ${response.message()} ")
                 }
