@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.mvvm.app.databinding.ActivitySplashBinding
+import com.mvvm.app.factory.MyViewModelFactory
 import com.mvvm.app.ui.main.MainActivity
 
 @SuppressLint("CustomSplashScreen")
@@ -19,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this, SplashViewModelFactory()).get(SplashViewModel::class.java)
+        viewModel = ViewModelProvider(this, MyViewModelFactory())[SplashViewModel::class.java]
 
         viewModel.loading.observe(this) {
             if (it) {

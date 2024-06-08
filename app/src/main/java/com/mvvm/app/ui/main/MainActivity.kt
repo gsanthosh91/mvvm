@@ -1,15 +1,11 @@
 package com.mvvm.app.ui.main
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.mvvm.app.MovieAdapter
-import com.mvvm.app.data.remote.MainRepository
-import com.mvvm.app.data.remote.RetrofitService
 import com.mvvm.app.databinding.ActivityMainBinding
+import com.mvvm.app.factory.MyViewModelFactory
 
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel: MainViewModel
@@ -19,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        binding.setLifecycleOwner(this);
         setContentView(binding.root)
         viewModel = ViewModelProvider(this, MyViewModelFactory())[MainViewModel::class.java]
         binding.viewModel = viewModel
@@ -29,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             adapter.setMovies(it)
         })
 
-        viewModel.errorMessage.observe(this, {
+        /*viewModel.errorMessage.observe(this, {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })
 
@@ -39,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 binding.progressDialog.visibility = View.GONE
             }
-        })
+        })*/
 
         viewModel.getAllMovies()
 

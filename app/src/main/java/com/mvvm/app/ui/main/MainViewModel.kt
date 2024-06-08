@@ -3,9 +3,14 @@ package com.mvvm.app.ui.main
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.mvvm.app.data.remote.MainRepository
 import com.mvvm.app.Movie
-import kotlinx.coroutines.*
+import com.mvvm.app.data.remote.MainRepository
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainViewModel constructor(private val mainRepository: MainRepository) : ViewModel() {
 
@@ -15,7 +20,7 @@ class MainViewModel constructor(private val mainRepository: MainRepository) : Vi
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         onError("Exception handled: ${throwable.localizedMessage}")
     }
-    val loading = MutableLiveData<Boolean>()
+    val loading = MutableLiveData<Boolean>(false)
 
     fun getAllMovies() {
 
@@ -23,9 +28,9 @@ class MainViewModel constructor(private val mainRepository: MainRepository) : Vi
             loading.postValue(true)
             val response = mainRepository.getAllMovies()
             withContext(Dispatchers.Main) {
-                loading.value = false
+                loading.postValue(false)
                 if (response.isSuccessful) {
-                    Log.d("TAG", "getAllMovies: "+response.body()?.size)
+                    Log.d("TAG", "getAllMovies: " + response.body()?.size)
                     movieList.postValue(response.body()!!)
                 } else {
                     onError("Error : ${response.message()} ")
@@ -37,7 +42,6 @@ class MainViewModel constructor(private val mainRepository: MainRepository) : Vi
 
     private fun onError(message: String) {
         errorMessage.value = message
-        loading.value = false
     }
 
     override fun onCleared() {
