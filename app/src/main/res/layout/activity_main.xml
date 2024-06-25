@@ -41,7 +41,6 @@
             tools:itemCount="10"
             tools:listitem="@layout/adapter_movie" />
 
-
     </LinearLayout>
 
 </layout>

@@ -4,9 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.mvvm.app.data.remote.LoginRepository
-import com.mvvm.app.data.remote.RetrofitService
 import com.mvvm.app.databinding.ActivityLoginBinding
+import com.mvvm.app.factory.LoginViewModelFactory
 
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
