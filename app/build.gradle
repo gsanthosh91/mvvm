@@ -5,13 +5,14 @@ plugins {
 }
 
 android {
+    namespace "com.mvvm.app"
 
     defaultConfig {
         applicationId "com.mvvm.app"
         minSdkVersion 24
-        compileSdk 34
+        compileSdk 35
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
     }
 
     buildTypes {
@@ -48,12 +49,12 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.core:core-ktx:1.15.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.20"
     implementation 'com.google.android.material:material:1.12.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.databinding:databinding-runtime:8.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    implementation 'androidx.databinding:databinding-runtime:8.7.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3'
     // Networking
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
@@ -62,13 +63,13 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
 
     //Coroutine
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
     implementation 'com.google.code.gson:gson:2.10.1'
 
     //viewModel
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.2'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.2'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.7'
 
 
     //Glide
