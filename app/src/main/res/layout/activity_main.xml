@@ -12,25 +12,12 @@
             type="com.mvvm.app.ui.main.MainViewModel" />
     </data>
 
-    <LinearLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".ui.main.MainActivity">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@{String.valueOf(viewModel.loading)}" />
-
-        <ProgressBar
-            android:id="@+id/progressDialog"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:indeterminateTint="@color/black"
-            android:visibility="@{viewModel.loading ? View.VISIBLE : View.GONE}" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
@@ -41,7 +28,15 @@
             tools:itemCount="10"
             tools:listitem="@layout/adapter_movie" />
 
-    </LinearLayout>
+        <ProgressBar
+            android:id="@+id/progressDialog"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/black"
+            android:visibility="@{viewModel.loading ? View.VISIBLE : View.GONE}" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>
 

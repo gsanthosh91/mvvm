@@ -26,7 +26,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     }
 
     override fun createViewModel(): MainViewModel {
-        //val movie: Movie = intent.getParcelableExtra(EXTRA_MOVIE)
         return ViewModelProvider(this, MainViewModelFactory())[MainViewModel::class.java]
     }
 
@@ -34,38 +33,3 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         return ActivityMainBinding.inflate(layoutInflater)
     }
 }
-
-
-/*lateinit var viewModel: MainViewModel
-private val adapter = MovieAdapter()
-lateinit var binding: ActivityMainBinding
-
-override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    binding = ActivityMainBinding.inflate(layoutInflater)
-    binding.setLifecycleOwner(this);
-    setContentView(binding.root)
-    viewModel = ViewModelProvider(this, MyViewModelFactory())[MainViewModel::class.java]
-    binding.viewModel = viewModel
-
-    binding.recyclerview.adapter = adapter
-
-    viewModel.movieList.observe(this, {
-        adapter.setMovies(it)
-    })
-
-    *//*viewModel.errorMessage.observe(this, {
-            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
-        })
-
-        viewModel.loading.observe(this, Observer {
-            if (it) {
-                binding.progressDialog.visibility = View.VISIBLE
-            } else {
-                binding.progressDialog.visibility = View.GONE
-            }
-        })*//*
-
-        viewModel.getAllMovies()
-
-    }*/
