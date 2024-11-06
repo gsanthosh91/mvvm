@@ -12,32 +12,6 @@ import com.mvvm.app.ui.main.MainActivity
 
 class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>() {
 
-    //lateinit var viewModel: SplashViewModel
-
-    /*override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivitySplashBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        viewModel = ViewModelProvider(this, MyViewModelFactory())[SplashViewModel::class.java]
-
-        viewModel.loading.observe(this) {
-            if (it) {
-                startActivity(Intent(this, MainActivity::class.java))
-            }
-        }
-
-        viewModel.countdown()
-    }*/
-
-    override fun createViewBinding(layoutInflater: LayoutInflater): ActivitySplashBinding {
-        return ActivitySplashBinding.inflate(layoutInflater)
-    }
-
-    override fun createViewModel(): SplashViewModel {
-        return ViewModelProvider(this, SplashViewModelFactory())[SplashViewModel::class.java]
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -49,5 +23,12 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>() {
         viewModel.countdown();
     }
 
+    override fun createViewBinding(layoutInflater: LayoutInflater): ActivitySplashBinding {
+        return ActivitySplashBinding.inflate(layoutInflater)
+    }
+
+    override fun createViewModel(): SplashViewModel {
+        return ViewModelProvider(this, SplashViewModelFactory())[SplashViewModel::class.java]
+    }
 
 }
